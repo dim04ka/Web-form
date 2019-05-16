@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Тестовое задание</title>
   <link rel="stylesheet" href="css/style.css"></link>
-  
 </head>
 <body>
 <section class="main">
@@ -21,8 +20,83 @@
     <div class="out"></div>
   </div>
 </section>
+<script>
+  
 
+function myCallback(data){
 
-<script src="script.js"></script>
+  for( key in data) {
+
+    res = data[key]; 
+    var item_in = document.querySelector(".in");
+    var div = document.querySelector(".out");
+    var checbox = document.querySelector(".checkbox");
+    var cours = document.querySelector(".cours");
+    var btn1= document.querySelector(".btn-1");
+    var btn2 = document.querySelector(".btn-2");
+
+    btn1.onclick = function(e) {
+      e.preventDefault();
+      div.innerHTML = "";
+      flag = false;
+      count = 0;
+      var text = +(item_in.value);
+      if (text <= 0 ) {
+        alert("Введите положительное число");
+      } else {
+        for ( i = 0; i < res.length ; i++) {
+          if (res[i].length > text) {
+            div.innerHTML += "<li>" + res[i] + "</li>";
+            flag = true;
+            count++;
+          }
+        }
+        cours.innerHTML = count;
+        if (!flag) {
+          div.innerHTML = "Не найдено элементов по данным условиям";
+        }
+      }
+    }
+
+    btn2.onclick = function(e) {
+      e.preventDefault();
+      div.innerHTML = "";
+      flag = false;
+      count = 0;
+      var text = item_in.value;
+      if (text !== "") {
+        for ( i = 0; i < res.length ; i++) {
+          switch(checbox.checked){
+            case false:
+              objText = res[i].toLowerCase();
+              text1 = text.toLowerCase();
+              if (objText.indexOf(text1) !== -1) {
+                div.innerHTML += "<li>" + res[i] + "</li>";
+                flag = true;
+                count++;
+              }
+              break;
+            case true:
+              if (res[i].indexOf(text) !== -1) {
+                div.innerHTML += "<li>" + res[i] + "</li>";
+                flag = true;
+                count++;
+              }
+              break;
+          }
+        }
+        cours.innerHTML = count;
+        if (!flag) {
+          div.innerHTML = "Не найдено элементов по данным условиям";
+        }
+      } else {
+        alert("Пустая строка");
+      }
+    }   
+  }
+}
+   
+</script>
+<script src="https://jsonp.afeld.me/?callback=myCallback&url=http://www.mrsoft.by/data.json"></script>
 </body>
 </html>
