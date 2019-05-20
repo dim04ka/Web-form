@@ -8,6 +8,7 @@
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 10px;
+  background: white;
 }
 .in {
   width: 250px;
@@ -23,4 +24,39 @@
 }
 .cours {
   font-weight: bold;
+}
+.coun, .cours {
+  color: white;
+}
+.out {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 100vh;
+  z-index: -1;
+}
+.layet {
+  position: absolute;
+  top: 0;
+  left: -10%;
+  width: 110%;
+  height: 100%;
+}
+.layet-1 {
+  background: url("../img/lay1.png") no-repeat center;
+  background-size: cover
+}
+
+.layet-2 {
+  background: url("../img/lay2.png") no-repeat right;
+  left: -20%;
+  
 }
